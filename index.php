@@ -1,3 +1,10 @@
+<?php
+$arquivo = $_GET["arquivo"];
+$error   = 'page-error.php';
+if(!$arquivo) {
+	header( 'Location: /index.php?arquivo=home.php' ) ;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,19 +37,14 @@
 <body>
 	
 	<?php require_once("menu.php"); ?>
-
+	
 	<div class="container">
-		<?php
-		$arquivo = $_GET["arquivo"];
-		$error   = 'page-error.php';
-		?>
-
 		<?php if(!file_exists($arquivo)): ?>
 			<?php require_once($error); ?>
 		<?php else : ?>
 			<?php require_once($arquivo); ?>
 		<?php endif; ?>
-	</div><!-- /.container -->
+	</div>
 
 	<footer class="footer">
 		<div class="container">
